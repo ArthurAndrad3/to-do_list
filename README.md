@@ -1,6 +1,6 @@
 # To-Do List Application
 
-Este é um projeto simples de lista de tarefas (To-Do List) desenvolvido com React e TypeScript. A aplicação permite adicionar, concluir e excluir tarefas, além de oferecer filtros para exibir tarefas por palavra-chave e por status (todos, concluídos ou pendentes). As tarefas são persistidas no `localStorage` do navegador.
+Este é um projeto simples de lista de tarefas (To-Do List) desenvolvido com React e TypeScript. A aplicação permite adicionar, concluir e excluir tarefas, além de oferecer filtros para exibir tarefas por palavra-chave e por status (todos, concluídos ou pendentes). As tarefas são persistidas no `localStorage` do navegador. Além disso projeto conta com duas branchs, com estilos diferente, em que uma é urilizado tailWind e outra css puro.
 
 ## Funcionalidades
 
@@ -16,6 +16,7 @@ Este é um projeto simples de lista de tarefas (To-Do List) desenvolvido com Rea
 - CSS
 - `lucide-react` (para ícones)
 - `localStorage`
+- `tailwind` (na branch TailWind)
 
 ## Pré-requisitos
 
@@ -38,6 +39,12 @@ git clone https://github.com/ArthurAndrad3/to-do-list.git
 
 ```bash
 cd to-do-list
+```
+
+Se quiser a aplicação com css puro:
+
+```bash
+git branch PureCss
 ```
 
 ### 3.Instalar as Dependências
