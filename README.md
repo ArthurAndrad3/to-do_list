@@ -31,7 +31,7 @@ Certifique-se de ter instalado:
 Abra seu terminal e execute:
 
 ```bash
-git clone https://github.com/seu-usuario/to-do-list.git
+git clone https://github.com/ArthurAndrad3/to-do-list.git
 ```
 
 ### 2. Navegar até o Diretório do Projeto
