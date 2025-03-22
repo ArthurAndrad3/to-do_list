@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import "./ErrorNotification.css";
 
 interface ErrorNotificationProps {
   message: string;
@@ -16,8 +15,8 @@ const ErrorNotification: React.FC<ErrorNotificationProps> = ({
   }, [onClose]);
 
   return (
-    <div className="error-notification">
-      <p>{message}</p>
+    <div className="fixed bottom-5 right-10 bg-dracula-headerCard text-dracula-red p-4 rounded-lg shadow-2lg font-bold z-[1000] opacity-100 sm:right-5 ">
+      <p className="m-0">{message}</p>
     </div>
   );
 };

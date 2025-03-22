@@ -1,4 +1,3 @@
-import "./taskCard.css";
 import { CheckCircle, Circle, Trash } from "lucide-react";
 
 interface TaskCardProps {
@@ -16,18 +15,34 @@ const TaskCard: React.FC<TaskCardProps> = ({
   onDelete,
 }) => {
   return (
-    <div className={`task-card ${isCompleted ? "completed" : ""}`}>
-      <button className="task-toggle" onClick={onToggleComplete}>
+    <div
+      className={`flex items-center justify-between bg-dracula-inputBubble p-2 w-full rounded-lg shadow-md transition-all duration-300 ${
+        isCompleted ? "opacity-40" : ""
+      }`}
+    >
+      <button
+        className="bg-none border-none cursor-pointer flex items-center h-5"
+        onClick={onToggleComplete}
+      >
         {isCompleted ? (
-          <CheckCircle size={20} color="gray" />
+          <CheckCircle size={20} className="text-dracula-text" />
         ) : (
-          <Circle size={20} color="gray" />
+          <Circle size={20} className="text-dracula-text" />
         )}
       </button>
-      <p className={`task-desc ${isCompleted ? "completed" : ""}`}>
+
+      <p
+        className={`flex-grow m-0 ml-2 text-dracula-text text-md sm:text:lg ${
+          isCompleted ? "line-through" : ""
+        }`}
+      >
         {description}
       </p>
-      <button className="task-delete" onClick={onDelete}>
+
+      <button
+        className="bg-none border-none cursor-pointer  hover:bg-dracula-purple flex items-center gap-2 bg-gainsboro text-dracula-red px-2 py-1 rounded-lg text-md"
+        onClick={onDelete}
+      >
         <Trash size={18} color="#ff4d4d" />
         Remover
       </button>
