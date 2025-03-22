@@ -1,0 +1,25 @@
+.error-notification {
+  position: fixed;
+  bottom: 20px;
+  right: 40px;
+  background-color: white;
+  color: #e74c3c;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+  z-index: 1000;
+  opacity: 1;
+ 
+}
+
+@media (max-width: 420px) {
+  .error-notification {
+    right: 20px;
+  }
+}
+  
+.error-notification p {
+  margin: 0;
+}
+  

@@ -1,0 +1,61 @@
+.task-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    padding: 0.5rem;
+    width: 90%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s;
+}
+
+.task-card.completed {
+    background-color: gainsboro;
+    opacity: 0.7;
+}
+
+.task-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    height: 20px;
+}
+
+.task-desc {
+    flex-grow: 1;
+    margin: 0 ;
+    color: #000000;
+    line-break: auto;
+    font-size: 1rem;
+}
+.task-desc.completed {
+    text-decoration: line-through;
+}
+
+.task-delete {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #ffffff;
+    color: #ff4d4d;
+    border: none;
+    padding: 0.3rem 0.8rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.task-card.completed .task-delete {
+    background-color: gainsboro;
+}
+
+
+.task-delete:hover {
+    transform: scale(1.1);
+}
