@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Search } from "lucide-react";
-import "./header.css";
+import "./Header.css";
 
 interface HeaderProps {
   setFilterText: React.Dispatch<React.SetStateAction<string>>;

@@ -1,7 +1,7 @@
 .card {
     width: 90%;
     max-width: 800px;
-    background-color: #000000;
+    background-color: #3a3a3a;
     min-height: 70vh;
     padding: 2rem;
     border-radius: 12px;
@@ -26,11 +26,12 @@
 .addTo-Do-container {
     display: flex;
     position: relative;
-    width: 92.5%;
+    width: 100%;
 }
 
 .addTo-Do {
     width: 100%;
+    background-color: gainsboro;
     height: 2.5rem;
     padding: 0 4rem 0 1rem;
     font-size: 1rem;
@@ -53,7 +54,7 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    background-color: #ffffff;
+    background-color: gainsboro;
     color: black;
     border: none;
     padding: 0.3rem 0.8rem;

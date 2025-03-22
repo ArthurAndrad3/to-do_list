@@ -1,7 +1,7 @@
-import "./to-doList.css";
+import "./ToDoList.css";
 import { CirclePlus } from "lucide-react";
-import TaskCard from "./TaskCard/taskCard";
-import { useState, useEffect } from "react";
+import TaskCard from "./TaskCard/TaskCard";
+import { useEffect, useState } from "react";
 import ErrorNotification from "../ErrorMensage/ErrorNotification";
 
 interface Task {
@@ -15,12 +15,10 @@ interface ToDoListProps {
 }
 
 const ToDoList: React.FC<ToDoListProps> = ({ filterText, filterStatus }) => {
-  const [tasks, setTasks] = useState<Task[]>(() => {
-    const storedTasks = localStorage.getItem("tasks");
-    return storedTasks ? (JSON.parse(storedTasks) as Task[]) : [];
-  });
+  const [tasks, setTasks] = useState<Task[]>([]);
 
-  const [error, setError] = useState<boolean | null>(null);
+  const [taskInput, setTaskInput] = useState<string>("");
+
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const filteredTasks = tasks.filter((task) => {
     const matchesText = task.description
@@ -34,51 +32,50 @@ const ToDoList: React.FC<ToDoListProps> = ({ filterText, filterStatus }) => {
   });
 
   const handleToggleComplete = (id: number) => {
-    setTasks((prevTasks: Task[]) =>
-      prevTasks.map((task) =>
-        task.id === id ? { ...task, isCompleted: !task.isCompleted } : task
-      )
+    const newTasks = tasks.map((task) =>
+      task.id === id ? { ...task, isCompleted: !task.isCompleted } : task
     );
+    setTasks(newTasks);
+    localStorage.setItem("tasks", JSON.stringify(newTasks));
   };
 
   const handleDelete = (id: number) => {
-    setTasks((prevTasks: Task[]) => prevTasks.filter((task) => task.id !== id));
+    const newTasks = tasks.filter((task) => task.id !== id);
+    setTasks(newTasks);
+    localStorage.setItem("tasks", JSON.stringify(newTasks));
   };
 
   const handleAddTask = () => {
-    const inputElement = document.getElementById(
-      "taskInput"
-    ) as HTMLInputElement;
-    const newTask = inputElement.value.trim();
-
-    if (newTask === "") {
-      setError(true);
+    if (taskInput === "") {
       setErrorMessage("Campo vazio, por favor digite uma tarefa");
       return;
     }
 
     const isDuplicate = tasks.some(
-      (task) => task.description.toLowerCase() === newTask.toLowerCase()
+      (task) => task.description.toLowerCase() === taskInput.toLowerCase()
     );
     if (isDuplicate) {
-      setError(true);
       setErrorMessage("Esta tarefa já existe!");
       return;
     }
+    const newTasks = [
+      ...tasks,
+      { id: Date.now(), description: taskInput, isCompleted: false },
+    ];
+    setTasks(newTasks);
 
-    setTasks((prevTasks: Task[]) => [
-      ...prevTasks,
-      { id: Date.now(), description: newTask, isCompleted: false },
-    ]);
+    localStorage.setItem("tasks", JSON.stringify(newTasks));
 
-    setError(false);
     setErrorMessage(null);
-    inputElement.value = "";
+    setTaskInput("");
   };
 
   useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }, [tasks]);
+    const localStorageTasks = localStorage.getItem("tasks");
+    if (localStorageTasks) {
+      setTasks(JSON.parse(localStorageTasks));
+    }
+  }, []);
 
   return (
     <div className="card">
@@ -87,6 +84,8 @@ const ToDoList: React.FC<ToDoListProps> = ({ filterText, filterStatus }) => {
           type="text"
           id="taskInput"
           className="addTo-Do"
+          value={taskInput}
+          onChange={(e) => setTaskInput(e.target.value)}
           placeholder="Adicionar uma Tarefa"
           onKeyDown={(e) => e.key === "Enter" && handleAddTask()}
         />
@@ -107,10 +106,10 @@ const ToDoList: React.FC<ToDoListProps> = ({ filterText, filterStatus }) => {
         />
       ))}
 
-      {error && errorMessage && (
+      {errorMessage && (
         <ErrorNotification
           message={errorMessage}
-          onClose={() => setError(false)}
+          onClose={() => setErrorMessage(null)}
         />
       )}
     </div>
