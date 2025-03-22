@@ -1,6 +1,6 @@
 import "./App.css";
-import Header from "../../components/header/header";
-import ToDoList from "../../components/to-doList/to-doList";
+import Header from "../../components/Header/Header";
+import ToDoList from "../../components/To-doList/To-doList";
 import { useState } from "react";
 
 const App: React.FC = () => {

@@ -1,54 +1,86 @@
-# React + TypeScript + Vite
+# To-Do List Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é um projeto simples de lista de tarefas (To-Do List) desenvolvido com React e TypeScript. A aplicação permite adicionar, concluir e excluir tarefas, além de oferecer filtros para exibir tarefas por palavra-chave e por status (todos, concluídos ou pendentes). As tarefas são persistidas no `localStorage` do navegador.
 
-Currently, two official plugins are available:
+## Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Adicionar Tarefa:** Insira uma nova tarefa pelo campo de texto.
+- **Marcar Tarefa como Concluída:** Alterne o estado de uma tarefa para concluída ou pendente.
+- **Excluir Tarefa:** Remova tarefas da lista.
+- **Filtrar Tarefas:** Filtre por palavra-chave e por status (todos, concluídos ou pendentes).
+- **Persistência:** As tarefas são salvas automaticamente no `localStorage`, mantendo os dados mesmo após recarregar a página.
 
-## Expanding the ESLint configuration
+## Tecnologias Utilizadas
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React (com TypeScript)
+- CSS
+- `lucide-react` (para ícones)
+- `localStorage`
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Pré-requisitos
+
+Certifique-se de ter instalado:
+
+- [Node.js](https://nodejs.org/) (versão LTS recomendada)
+- [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com/)
+
+## Como Executar a Aplicação
+
+### 1. Clonar o Repositório
+
+Abra seu terminal e execute:
+
+```bash
+git clone https://github.com/seu-usuario/to-do-list.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Navegar até o Diretório do Projeto
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+cd to-do-list
+```
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+### 3.Instalar as Dependências
+
+Utilize o comando:
+
+```bash
+npm install
+```
+
+Ou, se preferir usar o yarn:
+Utilize o comando:
+
+```bash
+yarn
+```
+
+### 4. Iniciar a Aplicação
+
+Depois da instalação, inicie o servidor de desenvolvimento:
+
+```bash
+npm run dev
+```
+
+Ou, se estiver usando yarn:
+
+```bash
+yarn run dev
+```
+
+Abra seu navegador e acesse http://localhost:5173 para visualizar a aplicação.
+
+## Estrutura do Projeto
+
+```bash
+/src
+  /components
+    /ErrorMensage    # Componente com as mensagens de erro da verificação da validação de entrada
+    /Header          # Componente do cabeçalho com filtros e campo de busca
+    /To-doList       # Componente principal da lista de tarefas
+      /TaskCard      # Componente para exibição individual de cada tarefa
+  /pages
+    App.tsx
+  index.tsx
 ```

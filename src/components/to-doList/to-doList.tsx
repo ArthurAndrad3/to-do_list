@@ -1,6 +1,6 @@
 import "./to-doList.css";
 import { CirclePlus } from "lucide-react";
-import TaskCard from "./taskCard/taskCard";
+import TaskCard from "./TaskCard/TaskCard";
 import { useState, useEffect } from "react";
 import ErrorNotification from "../ErrorMensage/ErrorNotification";
 
